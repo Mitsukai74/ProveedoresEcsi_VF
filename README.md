@@ -7,8 +7,9 @@ Se ha migrado la base de datos de **MySQL a IBM DB2** y se ha implementado la fu
 ---
 ---
 ## 🚀 **Características Principales**
-✅ **Migración a DB2**: Adaptación del esquema y consultas a la nueva base de datos.  
-✅ **Gestión de proveedores**: Registro, edición, eliminación y búsqueda de proveedores.  
+✅ **Gestión de usuarios**: Creación, edición, visualización de roles y permisos de los usuarios potenciales de la aplicación.
+✅ **Visualización de proveedores creados**: vista con listado de todos los proveedores creados al momento de visualización con toda la información pertinente.
+✅ **Opciones de búsqueda**: Adaptación del esquema de MySql a DB2 y distintos criterio para consultas a la base de datos.    
 ✅ **Carga y visualización de documentos**: Asociar documentos PDF a proveedores y verlos desde la interfaz.  
 ✅ **Seguridad**: Autenticación de usuarios con roles y permisos.  
 ✅ **Interfaz intuitiva**: Uso de **Thymeleaf** para una experiencia fluida.  
@@ -19,5 +20,61 @@ Se ha migrado la base de datos de **MySQL a IBM DB2** y se ha implementado la fu
 - **Base de Datos**: IBM DB2
 - **Front-End**: Thymeleaf, HTML, CSS, Bootstrap
 - **Otros**: Maven, Git, Lombok
+
+## 🎯 **Requisitos Previos**
+Antes de ejecutar el proyecto, asegúrate de tener instalado:
+- **JDK 17** o superior
+- **Maven**
+- **IBM DB2 Express-C** (o una versión compatible)
+- **Docker** (opcional, si deseas usar DB2 en contenedor)
+
+---
+## 🔧 **Configuración y Ejecución**
+### 1️⃣ **Clonar el repositorio**
+```sh
+git clone https://github.com/tu-usuario/nombre-del-repositorio.git
+cd nombre-del-repositorio
+```
+
+### 2️⃣ **Configurar DB2**
+Asegúrate de que DB2 esté en ejecución y actualiza `application.properties` con tus credenciales:
+```properties
+spring.datasource.url=jdbc:db2://localhost:50000/NOMBRE_BD
+spring.datasource.username=usuario_db2
+spring.datasource.password=tu_contraseña
+spring.jpa.database-platform=org.hibernate.dialect.DB2Dialect
+```
+
+### 3️⃣ **Instalar dependencias y ejecutar**
+```sh
+mvn clean install
+mvn spring-boot:run
+```
+
+---
+## 📂 **Estructura del Proyecto**
+```plaintext
+📦 gestion-proveedores
+ ┣ 📂 src/main/java/com/empresa/proveedores
+ ┃ ┣ 📂 controllers
+ ┃ ┣ 📂 models
+ ┃ ┣ 📂 repositories
+ ┃ ┣ 📂 services
+ ┣ 📂 src/main/resources/templates
+ ┣ 📂 src/main/resources/static
+ ┣ 📜 application.properties
+ ┣ 📜 pom.xml
+ ┗ 📜 README.md
+```
+
+---
+## 📄 **Licencia**
+Este proyecto está bajo la licencia MIT. 🙌
+
+📧 **Contacto**: [abaron@ecsi.com.co]  
+💻 **Repositorio**: [(https://github.com/Mitsukai74/ProveedoresEcsi_VF)]
+
+---
+🚀 _¡Gracias por visitar este proyecto!_ 😊
 
 
