@@ -1,5 +1,5 @@
 # 📌 Proyecto de Gestión de Proveedores
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.4-green?style=for-the-badge&logo=springboot) ![DB2](https://img.shields.io/badge/Database-DB2-blue?style=for-the-badge&logo=ibm) ![Thymeleaf](https://img.shields.io/badge/Template%20Engine-Thymeleaf-orange?style=for-the-badge&logo=thymeleaf)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.4-green?style=for-the-badge&logo=springboot) ![DB2](https://img.shields.io/badge/Database-DB2-blue?style=for-the-badge&logo=ibm) ![Thymeleaf](https://img.shields.io/badge/Template%20Engine-Thymeleaf-orange?style=for-the-badge&logo=thymeleaf) ![Java](https://img.shields.io/badge/javafx-%23FF0000.svg?style=for-the-badge&logo=javafx&logoColor=white)
 
 
 
