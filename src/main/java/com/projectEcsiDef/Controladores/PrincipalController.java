@@ -8,6 +8,6 @@ public class PrincipalController {
 	
 	@GetMapping(path = "/test")
 	public String mostrarPlantilla() {
-		return "login";
+		return "inicio";
 	}
 }
