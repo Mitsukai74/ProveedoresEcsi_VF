@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
 	<meta charset="utf-8">
 	<title>Inicio plataforma de proveedores ECSI SAS</title>
 	
 	<!-- Librerias de estilos -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-	
+	<link rel="stylesheet" th:href="@{/lib/animate/animate.min.css}">
+	<link rel="stylesheet" th:href="@{/lib/owlcarousel/owlcarousel/assets/owl.carousel.min.css}" >
+	<link rel="stylesheet" th:href="@{/lib/lightbox/lightbox/css/lightbox.min.css}" >
+	    
 	<!-- Estilos de Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     
     <!-- plantilla de estilos generales -->
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}" >
 </head>
 <body>
 
 <!-- Inicio del carrusel -->
+
     <div class="container-fluid p-0 pb-5">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative">
@@ -79,12 +80,14 @@
                             <h5 class="lh-base mb-0"></h5>
                         </div>
                         <div class="portfolio-text text-center bg-white p-4">
-                            <p class="text-primary mb-2">Fabricaciones metálicas</p>
-                            <h5 class="lh-base mb-3">Fabricación de estructuras metálicas para construcción,minería,industrial y víal además, de pintura y mantenimiento preventivo</h5>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href="img/portfolio-1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fa fa-link"></i></a>
-                            </div>
+                            <h5 class="lh-base mb-3">
+                            	<ul>
+                            		<li>Ingresar con usuario administrador</li>
+                            		<li>Asignar credenciales al nuevo usuario</li>
+                            		<li>Corroborar que el usuario posea correo institucional</li>
+                            		<li>Asignar rol al usuario</li>                            	
+                            	</ul>
+                            </h5>                          
                         </div>
                     </div>
                 </div>
@@ -189,6 +192,7 @@
         </div>
     </div>
     <!-- Projects End -->
-
+    <!-- Archivos js -->
+	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 </body>
 </html>
