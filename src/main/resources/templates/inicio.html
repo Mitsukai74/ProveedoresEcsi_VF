@@ -6,10 +6,10 @@
 	
 	<!-- Librerias de estilos -->
 	<link rel="stylesheet" th:href="@{/lib/animate/animate.min.css}">
-	<link rel="stylesheet" th:href="@{/lib/owlcarousel/owlcarousel/assets/owl.carousel.min.css}" >
-	<link rel="stylesheet" th:href="@{/lib/lightbox/lightbox/css/lightbox.min.css}" >
+	<!-- <link rel="stylesheet" th:href="@{/lib/owlcarousel/owlcarousel/assets/owl.carousel.min.css}" >
+	<link rel="stylesheet" th:href="@{/lib/lightbox/lightbox/css/lightbox.min.css}" > -->
 	    
-	<!-- Estilos de Bootstrap -->
+	<!-- Estilos de Bootstrap 5.0-->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     
     <!-- plantilla de estilos generales -->
@@ -18,51 +18,34 @@
 <body>
 
 <!-- Inicio del carrusel -->
-
-    <div class="container-fluid p-0 pb-5">
-        <div class="owl-carousel header-carousel position-relative">
-            <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="images/env.jpg" alt="">
-                <div class="carousel-inner">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-lg-8 text-center">
-                                <h1 class="display-3 text-white animated slideInDown mb-4">El mejor equipo solo para los mejores proyectos</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Contamos con equipos de última tecnología </p>                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="images/imaPl4.jpg" alt="">
-                <div class="carousel-inner">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-lg-8 text-center">
-                                <h1 class="display-3 text-white animated slideInDown mb-4">Construyendo el futuro</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Tenemos la capacidad para enfretarnos a retos importantes</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="images/img1.jpg" alt="">
-                <div class="carousel-inner">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-lg-8 text-center">
-                                <h1 class="display-3 text-white animated slideInDown mb-4">Contamos con el mejor personal capacitado </h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-2">para alcanzar con todos los objetivos y completa satisfacción de nuestros clientes</p>                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/images/imaPl4.png" class="d-block w-100" alt="...">
     </div>
-    <!-- Fin del carrusel -->
+    <div class="carousel-item">
+      <img src="/images/env.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/images/img1.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+	<!-- Fin del carrusel -->
     
     <!-- Inicio del instructivo -->
     <div class="container-xxl py-5">
@@ -111,11 +94,7 @@
                                 <li>Tracto camabaja</li>
                                 <li>Volquetes de 15 y 17 m3</li>
                             </u>
-                            </h5>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href="img/portfolio-2.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fa fa-link"></i></a>
-                            </div>
+                            </h5>                            
                         </div>
                     </div>
                 </div>
@@ -129,9 +108,7 @@
                         <div class="portfolio-text text-center bg-white p-4">
                             <p class="text-primary mb-2">Mantenimiento de maquinaria</p>
                             <h5 class="lh-base b-2">Mantenimiento de maquinaria pesada para la construcción y minería.Mantenimiento correctivo y preventivo, evaluaciones y análisis de falla,montaje y desmontaje,reemplazo de piezas, reconstrucción de estructura,planchado y pintura</h5>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href="img/portfolio-3.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fa fa-link"></i></a>
+                            <div class="d-flex justify-content-center">                                
                             </div>
                         </div>
                     </div>
@@ -146,9 +123,7 @@
                         <div class="portfolio-text text-center bg-white p-4">
                             <p class="text-primary mb-2">Movimiento de tierra y enrocados</p>
                             <h5 class="lh-base mb-3">Movimiento de tierras para la construcción y mineria, además de enrocados, protecciones ribereñas y encausamientos.</h5>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href="img/portfolio-4.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fa fa-link"></i></a>
+                            <div class="d-flex justify-content-center">                                
                             </div>
                         </div>
                     </div>
@@ -164,9 +139,7 @@
                             <p class="text-primary mb-2">Demolición y desmontaje</p>
                             <h5 class="lh-base mb-3">                               -Democilión de infraestructura de concreto.<br>
                             -Desmontaje de estructuras metálicas.  </h5>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href="img/portfolio-5.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fa fa-link"></i></a>
+                            <div class="d-flex justify-content-center">                                
                             </div>
                         </div>
                     </div>
@@ -181,9 +154,7 @@
                         <div class="portfolio-text text-center bg-white p-4">
                             <p class="text-primary mb-2"></p>
                             <h5 class="lh-base mb-3">Fabricación de sistemas hidraúlicos para maquinaria de construcción e industrial</h5>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href="img/portfolio-6.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-square btn-primary rounded-circle mx-1" href=""><i class="fa fa-link"></i></a>
+                            <div class="d-flex justify-content-center">                               
                             </div>
                         </div>
                     </div>
@@ -193,6 +164,9 @@
     </div>
     <!-- Projects End -->
     <!-- Archivos js -->
-	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+	<!-- <script src="lib/owlcarousel/owl.carousel.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+      
 </body>
 </html>
