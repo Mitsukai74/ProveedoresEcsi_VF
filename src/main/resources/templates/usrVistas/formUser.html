@@ -1,45 +1,49 @@
 <!DOCTYPE html>
-<html>
-<head th:replace="/plantilla :: head">
-<meta charset="UTF-8">
-<meta name="viewport"
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<title>Home</title>
+ <title>Creación de usuarios</title>
 </head>
-<header th:replace="/plantilla :: header"> </header>
+<!-- Estilos de Bootstrap 5.0-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+<header th:replace="~{/plantilla :: header}"> </header>
 <body>
+	<div class="container">
+		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="card-body">
+			<form th:action="@{/usuarios/save}" th:object="${usuario}"
+				method="post" class="form-control form-control-lg">
+				<div class="form-group">
+					<input type="hidden" th:field="*{idUser}"> <label
+						class="col-md-2" for="nombre">Digite nombre</label> <input
+						type="text" th:field="*{nombre}"
+						class="form-control form-control-sm col-md-6" id="nombre"
+						placeholder="Nombre en mayúscula"> <small></small>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2" for="clave">Digite el correo</label> <input
+						type="email" th:field="*{correo}"
+						class="form-control form-control-sm col-md-6" id="correo"
+						placeholder="Correo institucional de ECSI"> <small></small>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2" for="clave">Digite la clave</label> <input
+						type="password" th:field="*{clave}"
+						class="form-control form-control-sm col-md-6" id="clave"
+						placeholder="Clave numérica de 4 dígitos"> <small></small>
+				</div>
+				<div class="card-footer">
+					<input type="submit" class="btn btn-primary" value="Guardar" />
 
-<div class="container">
-		<div class="card bg-light">
-			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
-				<div class="card-body"></div>
-
-				<form th:action="@{/usuarios/save}" th:object="${usuario}" method="post">
-					<div class="form-group">
-						<input type="hidden" th:field="*{id_user}">
-						<label class="col-md-2" for="nombre">Digite nombre</label> <input
-							type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6"
-							id="nombre" placeholder="Nombre en mayúscula"> <small></small>							
-					</div>
-					<div class="form-group">
-						<label class="col-md-2" for="clave">Digite el correo</label> <input
-							type="email" th:field="*{correo}" class="form-control form-control-sm col-md-6"
-							id="correo" placeholder="Correo institucional de ECSI"> <small></small>
-					</div>
-					
-					<div class="form-group">
-						<label class="col-md-2" for="clave">Digite la clave</label> <input
-							type="password" th:field="*{password}" class="form-control form-control-sm col-md-6"
-							id="clave" placeholder="Clave numérica de 4 dígitos"> <small></small>
-					</div>
-					<div class="card-footer">
-						<input type="submit" class="btn btn-primary" value="Guardar"/>		
-					
-					</div>					
-				</form>
-			</div>
+				</div>
+			</form>
 		</div>
+	</div>
+	<div class="m-5"></div>
+	
 </body>
 <footer th:replace="~{/plantilla :: footer}"></footer>
 </html>
