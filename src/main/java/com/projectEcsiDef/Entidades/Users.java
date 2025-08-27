@@ -4,9 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 
 @Entity
+@Table(name = "USUARIOS")
 public class Users {
 	
 	@Id
@@ -20,7 +22,14 @@ public class Users {
 	private String nombre;	
 	private String correo;
 	private String clave;
+	private String rol;
 	
+	public String getRol() {
+		return rol;
+	}
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 	public Long getIdUser() {
 		return idUser;
 	}
@@ -45,6 +54,13 @@ public class Users {
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
+	
+	public Users(String nombre, String correo, String clave,String rol) {
+        this.nombre = nombre;
+        this.clave = clave;
+        this.correo = correo;
+        this.rol = rol;
+    }
 	
 
 }
