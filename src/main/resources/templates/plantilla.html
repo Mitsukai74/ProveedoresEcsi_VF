@@ -29,14 +29,18 @@
 </header>
 
 	<!-- Footer -->
-	<footer th:fragment="footer" class="bg-dark text-white text-center">
-		<div class="container">
+	<footer th:fragment="footer">
+		<div class="mx-auto" style="width: 200px">
+		<div class="bg-dark text-white text-center">
 			<p>Copyright Mitsukai &copy; 2025</p>
 		</div>
-		
+		</div>			
+	</footer>
+	
+	
 		<script type="text/javascript" th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
 		<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
-		<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>		
-	</footer>
+		<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	
 </body>
 </html>
