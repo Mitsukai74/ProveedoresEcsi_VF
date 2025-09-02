@@ -18,7 +18,7 @@ public class PrincipalController {
 	@GetMapping("/pruebaForms")
 	public String crearUser(Model model){
 		
-		Users usuario = new Users(null, null, null, null);
+		Users usuario = new Users(null, null, null);
 		
 		model.addAttribute("titulo","Formulario: Nuevo usuario");
 		model.addAttribute("usuario",usuario);

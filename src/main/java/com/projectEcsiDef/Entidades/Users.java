@@ -1,10 +1,11 @@
 package com.projectEcsiDef.Entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+
+import jakarta.persistence.*;
+
 
 
 @Entity
@@ -22,13 +23,23 @@ public class Users {
 	private String nombre;	
 	private String correo;
 	private String clave;
-	private String rol;
 	
-	public String getRol() {
-		return rol;
+	//haciendo relación entre las tablas:
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "usuario_roles", // tabla intermedia
+        joinColumns = @JoinColumn(name = "idUser"), // FK a usuarios
+        inverseJoinColumns = @JoinColumn(name = "idRol") // FK a roles
+    )
+    private Set<Rol> roles = new HashSet<>();
+	
+	
+	public Set<Rol> getRoles() {
+		return roles;
 	}
-	public void setRol(String rol) {
-		this.rol = rol;
+	public void setRoles(Set<Rol> roles) {
+		this.roles = roles;
 	}
 	public Long getIdUser() {
 		return idUser;
@@ -55,12 +66,10 @@ public class Users {
 		this.clave = clave;
 	}
 	
-	public Users(String nombre, String correo, String clave,String rol) {
+	public Users(String nombre, String correo, String clave) {
         this.nombre = nombre;
         this.clave = clave;
-        this.correo = correo;
-        this.rol = rol;
-    }
-	
+        this.correo = correo;       
+    }	
 
 }
