@@ -1,12 +1,9 @@
 package com.projectEcsiDef.Entidades;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import jakarta.persistence.*;
-
-
 
 @Entity
 @Table(name = "USUARIOS")
