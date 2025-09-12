@@ -27,6 +27,8 @@ public class SecurityCofig {
 	            .authorizeHttpRequests(auth -> auth
 	                // rutas públicas
 	                .requestMatchers("/login", "/css/**", "/js/**", "/images/**").permitAll()
+	                //solo para los que inician sesión
+	                .requestMatchers("/inicio").authenticated()	                
 	                // solo ADMIN puede acceder a /admin/**
 	                .requestMatchers("/admin/**").hasRole("ADMIN")
 	                // cualquier usuario autenticado puede acceder a lo demás

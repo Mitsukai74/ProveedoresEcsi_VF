@@ -10,19 +10,20 @@ import com.projectEcsiDef.Entidades.Users;
 @Controller
 public class PrincipalController {
 	
-	@GetMapping(path = "/test")
+	@GetMapping(path = "/login")
 	public String mostrarPlantilla() {
-		return "inicio";
-	}
+		return "login";
+	}	
 	
-	@GetMapping("/pruebaForms")
-	public String crearUser(Model model){
-		
-		Users usuario = new Users(null, null, null);
-		
-		model.addAttribute("titulo","Formulario: Nuevo usuario");
-		model.addAttribute("usuario",usuario);
-				
-		return "/usrVistas/formUser";
-	}
+	@GetMapping("/inicio")
+    public String inicio() {
+        return "inicio"; 
+    }
+	
+	// Vista de crear usuarios (solo para admin)
+    @GetMapping("/admin/usuarios/nuevo")
+    public String crearUsuario() {
+        return "/usrVistas/formUser";
+    }
+	
 }

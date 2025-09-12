@@ -1,15 +1,25 @@
 package com.projectEcsiDef.Entidades;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "ROL")
 public class Rol {
 	
-	private Long idRol;
-    public Long getIdRol() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID_ROL")
+	private int idRol;
+	@Column(name = "DESCRIPCION")
+	private String descripcion;
+	
+    public int getIdRol() {
 		return idRol;
 	}
-	public void setIdRol(Long idRol) {
+	public void setIdRol(int idRol) {
 		this.idRol = idRol;
 	}
 	public String getDescripcion() {
@@ -18,6 +28,6 @@ public class Rol {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	private String descripcion;
+	
 
 }

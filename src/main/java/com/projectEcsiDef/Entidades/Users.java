@@ -11,23 +11,26 @@ public class Users {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idUser;
+	@Column(name = "ID_USER")
+	private int idUser;
+	
+	private String nombre;	
+	private String correo;
+	private String clave;
 	
 	@Override
 	public String toString() {
 		return "Users [idUser=" + idUser + ", nombre=" + nombre + ", correo=" + correo + ", clave=" + clave + "]";
 	}
-	private String nombre;	
-	private String correo;
-	private String clave;
+	
 	
 	//haciendo relación entre las tablas:
 	
 	@ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "usuario_roles", // tabla intermedia
-        joinColumns = @JoinColumn(name = "idUser"), // FK a usuarios
-        inverseJoinColumns = @JoinColumn(name = "idRol") // FK a roles
+        joinColumns = @JoinColumn(name = "ID_USER"), // FK a usuarios
+        inverseJoinColumns = @JoinColumn(name = "ID_ROL") // FK a roles
     )
     private Set<Rol> roles = new HashSet<>();
 	
@@ -38,10 +41,10 @@ public class Users {
 	public void setRoles(Set<Rol> roles) {
 		this.roles = roles;
 	}
-	public Long getIdUser() {
+	public int getIdUser() {
 		return idUser;
 	}
-	public void setIdUser(Long idUser) {
+	public void setIdUser(int idUser) {
 		this.idUser = idUser;
 	}
 	public String getNombre() {
@@ -67,6 +70,8 @@ public class Users {
         this.nombre = nombre;
         this.clave = clave;
         this.correo = correo;       
-    }	
+    }
+	//Constructor vacío obligatorio por Hibernate
+	public Users() {}
 
 }

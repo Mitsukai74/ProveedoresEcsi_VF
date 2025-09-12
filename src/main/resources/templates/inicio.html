@@ -55,7 +55,7 @@
                 <h1 class="display-5 mb-5">Instructivo para el uso de la plataforma</h1>
             </div>            
             <div class="row g-4 portfolio-container">
-                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.5s">
                     <div class="portfolio-inner">
                         <img class="img-fluid w-100" src="img/portfolio-1.jpg" alt="">
                         <div class="text-center p-4">
@@ -74,26 +74,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.5s">
                     <div class="portfolio-inner">
                         <img class="img-fluid w-100" src="img/portfolio-2.jpg" alt="">
                         <div class="text-center p-4">
-                            <p class="text-primary mb-2">2. Visualización de lista de proveedores</p>
+                            <p class="text-primary mb-2">2. Búsqueda de proveedores</p>
                             <h5 class="lh-base mb-0"></h5>
                         </div>
-                        <div class="portfolio-text text-center bg-white p-3">
-                            <p class="text-primary mb-2">Alquiler de maquinaria</p>
-                            <h5 class="lh-base mb-3">Servicio para la construcción y minería,                              
+                        <div class="portfolio-text text-center bg-white p-3">                            
+                            <h5 class="lh-base mb-3">Desde la barra de herramientas se puede escoger por:                              
                             <ul>
-                                <li>Excavadoras</li>
-                                <li>Motoniveladoras</li>
-                                <li>Cargadoras frontales</li>
-                                <li>Rodillos compactadores</li>
-                                <li>Retroexcavadoras</li>
-                                <li>Minicargadores</li>
-                                <li>Tracto camabaja</li>
-                                <li>Volquetes de 15 y 17 m3</li>
-                            </u>
+                                <li>Número de NIT</li>
+                                <li>Razón social</li>
+                                <li>Código de proveedor ECSI</li>                                
+                            </ul>
                             </h5>                            
                         </div>
                     </div>
@@ -102,33 +96,17 @@
                     <div class="portfolio-inner">
                         <img class="img-fluid w-100" src="img/portfolio-3.jpg" alt="">
                         <div class="text-center p-4">
-                            <p class="text-primary mb-2">Mantenimiento de maquinaria</p>
+                            <p class="text-primary mb-2">Descarga de reporte de búsqueda</p>
                             <h5 class="lh-base mb-0"></h5>
                         </div>
-                        <div class="portfolio-text text-center bg-white p-4">
-                            <p class="text-primary mb-2">Mantenimiento de maquinaria</p>
-                            <h5 class="lh-base b-2">Mantenimiento de maquinaria pesada para la construcción y minería.Mantenimiento correctivo y preventivo, evaluaciones y análisis de falla,montaje y desmontaje,reemplazo de piezas, reconstrucción de estructura,planchado y pintura</h5>
+                        <div class="portfolio-text text-center bg-white p-4">                            
+                            <h5 class="lh-base b-2">Después de realizar la respectiva búsqueda </h5>
                             <div class="d-flex justify-content-center">                                
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="portfolio-inner">
-                        <img class="img-fluid w-100" src="img/portfolio-4.jpg" alt="">
-                        <div class="text-center p-4">
-                            <p class="text-primary mb-2">Movimiento de tierra y enrocados</p>
-                            <h5 class="lh-base mb-0"></h5>
-                        </div>
-                        <div class="portfolio-text text-center bg-white p-4">
-                            <p class="text-primary mb-2">Movimiento de tierra y enrocados</p>
-                            <h5 class="lh-base mb-3">Movimiento de tierras para la construcción y mineria, además de enrocados, protecciones ribereñas y encausamientos.</h5>
-                            <div class="d-flex justify-content-center">                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.3s">
+                </div>                
+                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.5s">
                     <div class="portfolio-inner">
                         <img class="img-fluid w-100" src="img/portfolio-5.jpg" alt="">
                         <div class="text-center p-4">
@@ -162,6 +140,9 @@
             </div>
         </div>
     </div>
+    
+    <a class="btn btn-primary btn-lg btn-block" th:href="@{/provReembolsos/}"
+				th:text="'Click para continuar'" title="Lista de proveedores"></a>
     <!-- Projects End -->
     <!-- Archivos js -->
 	<!-- <script src="lib/owlcarousel/owl.carousel.min.js"></script> -->
