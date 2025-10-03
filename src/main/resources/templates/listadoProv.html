@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/plantilla :: head">
+<head th:replace="~{/plantilla :: head}">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>Listado</title>
 </head>
-<header th:replace="/plantilla :: header"> </header>
+<header th:replace="~{/plantilla :: header}"> </header>
 <body>
 	<div class="container">
 		<h1 th:text="${titulo}" class="text-center"></h1>
 	</div>	
 	<div>
-		<form action="" th:action="@{/provReembolsos/buscar}" method="get">			
+		<form action="" th:action="@{/proveedores/buscar}" method="get">			
 				<!-- ******** Botón de búsqueda ********* -->
 			<div class="row">
 				<div class="input-group mb-3 col-lg-4 col-md-4">
@@ -46,26 +46,26 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="preem:${proveedores}">
-					<td th:text="${preem.nit}"></td>
-					<td th:text="${preem.cod_ecsi}"></td>
-					<td th:text="${preem.razon_social}"></td>
-					<td th:text="${preem.direccion}"></td>
-					<td th:text="${preem.telefono}"></td>
-					<td th:text="${preem.cod_mun}"></td>
-					<td th:text="${preem.cod_depto}"></td>
-					<td th:text="${preem.correo}"></td>
-					<td th:text="${preem.actividad}"></td>
-					<td th:text="${preem.tipo_prov}"></td>
-					<td th:text="${preem.fecha_creacion}"></td>
-					<td><a class="btn btn-success btn-sm" th:text="'Ver documentos'"
+				<tr th:each="prov: ${Proveedores}">
+					<td th:text="${prov.nit}"></td>
+					<td th:text="${prov.codigoEcsi}"></td>
+					<td th:text="${prov.razonSocial}"></td>
+					<td th:text="${prov.direccion}"></td>
+					<td th:text="${prov.telefono}"></td>
+					<td th:text="${prov.codMun}"></td>
+					<td th:text="${prov.codDepto}"></td>
+					<td th:text="${prov.correo}"></td>
+					<td th:text="${prov.actividad}"></td>
+					<td th:text="${prov.tipoProv}"></td>
+					<td th:text="${prov.fechaCreacion}"></td>
+					<!-- <td><a class="btn btn-success btn-sm" th:text="'Ver documentos'"
 						title="Ver documentos"
 						th:href="@{/provReembolsos/edit/} + ${preem.id}"
 						onclick="return confirm('No tiene privilegios para ver los documentos')">
-					</a></td>
+					</a></td> -->
 				</tr>
 			</tbody>
 		</table>
 </body>
-<footer th:replace="/plantilla :: footer "> </footer>
+<footer th:replace="~{/plantilla :: footer}"> </footer>
 </html>
