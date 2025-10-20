@@ -3,6 +3,9 @@ package com.projectEcsiDef.Entidades;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+
+import java.util.Set;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +18,9 @@ public class Rol {
 	private int idRol;
 	@Column(name = "DESCRIPCION")
 	private String descripcion;
+	
+	@ManyToMany(mappedBy = "roles")
+    private Set<Users> usuarios;
 	
     public int getIdRol() {
 		return idRol;

@@ -25,7 +25,7 @@
 							placeholder="Nombre en mayúscula"> <small></small>
 					</div>
 					<div class="form-group">
-						<label class="col-md-2" for="clave">Digite el correo</label> <input
+						<label class="col-md-2" for="correo">Digite el correo</label> <input
 							type="email" th:field="*{correo}"
 							class="form-control form-control-sm col-md-6" id="correo"
 							placeholder="Correo institucional de ECSI"> <small></small>
@@ -35,6 +35,14 @@
 							type="password" th:field="*{clave}"
 							class="form-control form-control-sm col-md-6" id="clave"
 							placeholder="Clave numérica de 4 dígitos"> <small></small>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2" for="rol">Seleccione el rol</label>
+						<select name="idRol" class="form-select">
+							<option value="" disabled selected>-- Seleccione un rol --</option>
+							<option th:each="rol : ${roles}" th:value="${rol.idRol}" th:text="${rol.descripcion}"></option>
+						</select>
+						<small></small>
 					</div>
 					<div class="card-footer">
 						<input type="submit" class="btn btn-primary" value="Guardar" />
