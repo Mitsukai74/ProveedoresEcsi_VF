@@ -15,7 +15,7 @@
 		<div class="card bg-light">
 			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
 			<div class="card-body">
-				<form th:action="@{/usuarios/save}" th:object="${usuario}"
+				<form th:action="@{/user/save}" th:object="${usuario}"
 					method="post" class="form-control form-control-lg">
 					<div class="form-group">
 						<input type="hidden" th:field="*{idUser}"> <label
@@ -38,9 +38,11 @@
 					</div>
 					<div class="form-group">
 						<label class="col-md-2" for="rol">Seleccione el rol</label>
-						<select name="idRol" class="form-select">
+						<select id="rol" name="idRol" class="form-select" required>
 							<option value="" disabled selected>-- Seleccione un rol --</option>
-							<option th:each="rol : ${roles}" th:value="${rol.idRol}" th:text="${rol.descripcion}"></option>
+							<option th:each="rol : ${roles}" 
+									th:value="${rol.idRol}"
+									th:text="${rol.descripcion}"></option>
 						</select>
 						<small></small>
 					</div>

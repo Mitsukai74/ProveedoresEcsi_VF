@@ -64,12 +64,13 @@ public class PrincipalController {
     @GetMapping("/user/form")
     public String showUserForm(Model model) {
     	model.addAttribute("usuario", new Users());
-        model.addAttribute("titulo", "Creación de usuarios");
-    	
-        return "usrVistas/formUser"; 
+    	model.addAttribute("roles", rolRepository.findAll());
+        model.addAttribute("titulo", "Creación de usuarios");     
+        
+    	return "usrVistas/formUser"; 
     }
     
-    @PostMapping("/save")
+    @PostMapping("/user/save")
     public String guardarUsuario(@ModelAttribute("usuario") Users usuario,
                                  @RequestParam("idRol") int idRol) {
 
@@ -77,15 +78,16 @@ public class PrincipalController {
         usuario.setClave(passwordEncoder.encode(usuario.getClave()));
 
         // Buscar el rol en la BD y asociarlo
-        Rol rol = rolRepository.findById(idRol)
-                .orElseThrow(() -> new RuntimeException("Rol no encontrado con id: " + idRol));
-        usuario.getRoles().add(rol);
-
+        Rol rol = rolRepository.findById(idRol).orElse(null);
+        if (rol !=null) {
+        	usuario.getRoles().add(rol);
+        }
+        
         // Guardar usuario en BD
         usersRepository.save(usuario);
 
         // Redirigir al listado o al inicio
-        return "redirect:/index";
+        return "redirect:/inicio";
     }
 	
 }
