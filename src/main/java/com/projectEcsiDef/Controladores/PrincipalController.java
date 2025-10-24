@@ -1,10 +1,9 @@
 package com.projectEcsiDef.Controladores;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +18,7 @@ import com.projectEcsiDef.Entidades.Users;
 import com.projectEcsiDef.Repositorios.RolRepository;
 import com.projectEcsiDef.Repositorios.UsuarioRepository;
 import com.projectEcsiDef.Servicios.IproveedoresServices;
+
 
 
 @Controller
@@ -44,12 +44,6 @@ public class PrincipalController {
         return "inicio"; 
     }
 	
-	// Vista de crear usuarios (solo para admin)
-    @GetMapping("/admin/usuarios/nuevo")
-    public String crearUsuario() {
-        return "/usrVistas/formUser";
-    }
-    
     @GetMapping("/listado")
 	public String listarprovReembolsos(Model model) {	
     	List<Proveedores> listadoprov = iproveedoresServices.listarTodosProvReem();
@@ -89,5 +83,19 @@ public class PrincipalController {
         // Redirigir al listado o al inicio
         return "redirect:/inicio";
     }
+    
+    @GetMapping("/buscar")
+	public String buscarProveedores(Pageable pageable,Model model, @RequestParam(required = false)String busqueda) {
+		
+		Page<Proveedores> proveedorPage = null;
+		if (busqueda != null && busqueda.trim().length() > 0) {
+			proveedorPage = iproveedoresServices.buscarPorRs(busqueda, pageable);
+		}else {
+	        proveedorPage = Page.empty(); // Página vacía si no hay búsqueda
+	    }		
+		model.addAttribute("proveedorPage",proveedorPage);
+				
+		return "/vistaBusquedas";
+	}
 	
 }

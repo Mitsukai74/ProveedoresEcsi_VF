@@ -30,7 +30,7 @@ public class SecurityCofig {
 	                //solo para los que inician sesión
 	                .requestMatchers("/inicio").authenticated()	                
 	                // solo ADMIN puede acceder a /admin/**
-	                .requestMatchers("/user/form","/user/save").hasRole("ADMIN")
+	                .requestMatchers("/user/**").hasRole("ADMIN")
 	                // cualquier usuario autenticado puede acceder a lo demás
 	                .anyRequest().authenticated()
 	            )
@@ -48,7 +48,7 @@ public class SecurityCofig {
 	                .logoutSuccessUrl("/login?logout")
 	                .permitAll()
 	            )
-	            .exceptionHandling(e -> e.accessDeniedPage("/errors/Error_404"))
+	            .exceptionHandling(e -> e.accessDeniedPage("/error/403"))
 	            .userDetailsService(usuarioDetailsService)
 	            .build();
     }

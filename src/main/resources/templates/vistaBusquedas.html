@@ -1,32 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{/plantilla :: head}">
+<head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<title>Listado</title>
+<title>Búsquedas</title>
 </head>
-<header th:replace="~{/plantilla :: header}"> </header>
 <body>
-	<div class="container">
-		<h1 th:text="${titulo}" class="text-center"></h1>
-	</div>	
-	<div>
-		<form action="" th:action="@{/buscar}" method="get">			
-				<!-- ******** Botón de búsqueda ********* -->
-			<div class="row">
-				<div class="input-group mb-3 col-lg-4 col-md-4">
-				<i class="bi bi-search"></i>
-					<button class="btn btn-outline-primary" type="submit" 
-						id="button-addon1" th:text="'Buscar por razón'">
-												
-					</button>
-					<input type="text" class="form-control"
-						placeholder="Buscar por nombre" name="busqueda">
-				</div>
-			</div>
-		</form>
-	</div>
+	<header th:replace="~{/plantilla :: header}"></header>
 	<table class="table">
 			<thead class="thead-dark text-center">
 				<tr>
@@ -64,7 +43,9 @@
 					</a></td> -->
 				</tr>
 			</tbody>
-		</table>
+		</table>	
+	
+	<footer th:replace="~{/plantilla :: footer}"></footer>
+
 </body>
-<footer th:replace="~{/plantilla :: footer}"> </footer>
 </html>
