@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.projectEcsiDef.Entidades.Proveedores;
 import com.projectEcsiDef.Entidades.Rol;
 import com.projectEcsiDef.Entidades.Users;
+import com.projectEcsiDef.Repositorios.ProveedoresRepository;
 import com.projectEcsiDef.Repositorios.RolRepository;
 import com.projectEcsiDef.Repositorios.UsuarioRepository;
 import com.projectEcsiDef.Servicios.IproveedoresServices;
@@ -26,13 +27,18 @@ public class PrincipalController {
 	
 	@Autowired
 	private IproveedoresServices iproveedoresServices;
+	
 	@Autowired
 	private RolRepository rolRepository;
+	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private UsuarioRepository usersRepository;
+	
+	@Autowired
+	private ProveedoresRepository proveedoresRepository;
 	
 	@GetMapping(path = "/login")
 	public String mostrarPlantilla() {
@@ -82,20 +88,13 @@ public class PrincipalController {
 
         // Redirigir al listado o al inicio
         return "redirect:/inicio";
-    }
-    
-    @GetMapping("/buscar")
-	public String buscarProveedores(Pageable pageable,Model model, @RequestParam(required = false)String busqueda) {
-		
-		Page<Proveedores> proveedorPage = null;
-		if (busqueda != null && busqueda.trim().length() > 0) {
-			proveedorPage = iproveedoresServices.buscarPorRs(busqueda, pageable);
-		}else {
-	        proveedorPage = Page.empty(); // Página vacía si no hay búsqueda
-	    }		
-		model.addAttribute("proveedorPage",proveedorPage);
-				
-		return "/vistaBusquedas";
-	}
+    }    
 	
+    @GetMapping("/buscar")
+    public String buscarProveedores(@RequestParam("keyword") String keyword, Model model) {
+        List<Proveedores> resultados = proveedoresRepository.searchByRazonSocial(keyword);
+        model.addAttribute("resultados", resultados);
+        model.addAttribute("keyword", keyword); // opcional, para mostrar lo que buscó el usuario
+        return "vistaBusquedas"; 
+    }
 }

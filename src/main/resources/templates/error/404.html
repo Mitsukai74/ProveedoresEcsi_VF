@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error 404 - Página no encontrada</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body class="bg-light text-center">
+    <div class="container mt-5">
+        <h1 class="display-4 text-danger">Error 404</h1>
+        <p class="lead">La página que intenta acceder no existe o ha sido movida.</p>
+        <img th:src="@{/images/error404.png}" alt="Error 404" class="img-fluid my-4" style="max-width: 300px;">
+        <a href="/inicio" class="btn btn-primary">Volver al inicio</a>
+    </div>
+</body>
+</html>

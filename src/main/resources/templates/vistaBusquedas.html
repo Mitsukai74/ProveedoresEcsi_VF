@@ -3,49 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <title>Búsquedas</title>
+ <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
 	<header th:replace="~{/plantilla :: header}"></header>
-	<table class="table">
-			<thead class="thead-dark text-center">
-				<tr>
-					<th scope="col">NIT</th>
-					<th scope="col">Código ECSI</th>
-					<th scope="col">Razón social</th>
-					<th scope="col">Dirección</th>
-					<th scope="col">Teléfono</th>
-					<th scope="col">Código mcpio</th>
-					<th scope="col">Código de depto</th>
-					<th scope="col">Correo</th>
-					<th scope="col">CIIU</th>
-					<th scope="col">Tipo Prov</th>
-					<th scope="col">Fecha creación</th>					
-					<th scope="col">Ver documentación</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="prov: ${Proveedores}">
-					<td th:text="${prov.nit}"></td>
-					<td th:text="${prov.codigoEcsi}"></td>
-					<td th:text="${prov.razonSocial}"></td>
-					<td th:text="${prov.direccion}"></td>
-					<td th:text="${prov.telefono}"></td>
-					<td th:text="${prov.codMun}"></td>
-					<td th:text="${prov.codDepto}"></td>
-					<td th:text="${prov.correo}"></td>
-					<td th:text="${prov.actividad}"></td>
-					<td th:text="${prov.tipoProv}"></td>
-					<td th:text="${prov.fechaCreacion}"></td>
-					<!-- <td><a class="btn btn-success btn-sm" th:text="'Ver documentos'"
+
+	<div class="container mt-4">
+		<p th:if="${#lists.isEmpty(resultados)}" class="text-muted">
+			No se encontraron resultados para: <b th:text="${keyword}"></b>
+		</p>
+
+		<div th:if="${!#lists.isEmpty(resultados)}">
+			<p>
+				Proveedores encontrados para: <b th:text="${keyword}"></b>
+			</p>
+
+			<table class="table table-striped">
+				<thead class="thead-dark text-center">
+					<tr>
+						<th scope="col">NIT</th>
+						<th scope="col">Código ECSI</th>
+						<th scope="col">Razón social</th>
+						<th scope="col">Dirección</th>
+						<th scope="col">Teléfono</th>
+						<th scope="col">Código mcpio</th>
+						<th scope="col">Código de depto</th>
+						<th scope="col">Correo</th>
+						<th scope="col">CIIU</th>
+						<th scope="col">Tipo Prov</th>
+						<th scope="col">Fecha creación</th>
+						<th scope="col">Ver documentación</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="prov: ${resultados}">
+						<td th:text="${prov.nit}"></td>
+						<td th:text="${prov.codigoEcsi}"></td>
+						<td th:text="${prov.razonSocial}"></td>
+						<td th:text="${prov.direccion}"></td>
+						<td th:text="${prov.telefono}"></td>
+						<td th:text="${prov.codMun}"></td>
+						<td th:text="${prov.codDepto}"></td>
+						<td th:text="${prov.correo}"></td>
+						<td th:text="${prov.actividad}"></td>
+						<td th:text="${prov.tipoProv}"></td>
+						<td th:text="${prov.fechaCreacion}"></td>
+						<!-- <td><a class="btn btn-success btn-sm" th:text="'Ver documentos'"
 						title="Ver documentos"
 						th:href="@{/provReembolsos/edit/} + ${preem.id}"
 						onclick="return confirm('No tiene privilegios para ver los documentos')">
 					</a></td> -->
-				</tr>
-			</tbody>
-		</table>	
-	
-	<footer th:replace="~{/plantilla :: footer}"></footer>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			 <a th:href="@{/listado}" class="btn btn-secondary mt-3">Volver al listado</a>
+		</div>	
 
+		<footer th:replace="~{/plantilla :: footer}"></footer>	
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>	
 </body>
 </html>

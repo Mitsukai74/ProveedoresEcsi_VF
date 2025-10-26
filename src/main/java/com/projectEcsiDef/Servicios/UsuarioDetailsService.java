@@ -29,8 +29,8 @@ public class UsuarioDetailsService implements UserDetailsService {
 
         // Convierte los roles en GrantedAuthority
         Set<GrantedAuthority> authorities = usuario.getRoles()
-                .stream()
-                .map(rol -> new SimpleGrantedAuthority("ROLE_" + rol.getDescripcion().toUpperCase()))
+                .stream()                
+                .map(rol -> new SimpleGrantedAuthority(rol.getDescripcion()) )
                 .collect(Collectors.toSet());
 
         // Retorna un objeto User de Spring Security
