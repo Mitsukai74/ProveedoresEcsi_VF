@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <title>Creación de usuarios</title>
+</head>
+<!-- Estilos de Bootstrap 5.0-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+<header th:replace="~{/plantilla :: header}"> </header>
+<body>
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+			<div class="card-body">
+				<form th:action="@{/user/save}" th:object="${usuario}"
+					method="post" class="form-control form-control-lg">
+					<div class="form-group">
+						<input type="hidden" th:field="*{idUser}"> <label
+							class="col-md-2" for="nombre">Digite nombre</label> <input
+							type="text" th:field="*{nombre}"
+							class="form-control form-control-sm col-md-6" id="nombre"
+							placeholder="Nombre en mayúscula"> <small></small>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2" for="correo">Digite el correo</label> <input
+							type="email" th:field="*{correo}"
+							class="form-control form-control-sm col-md-6" id="correo"
+							placeholder="Correo institucional de ECSI"> <small></small>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2" for="clave">Digite la clave</label> <input
+							type="password" th:field="*{clave}"
+							class="form-control form-control-sm col-md-6" id="clave"
+							placeholder="Clave numérica de 4 dígitos"> <small></small>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2" for="rol">Seleccione el rol</label>
+						<select id="rol" name="idRol" class="form-select" required>
+							<option value="" disabled selected>-- Seleccione un rol --</option>
+							<option th:each="rol : ${roles}" 
+									th:value="${rol.idRol}"
+									th:text="${rol.descripcion}"></option>
+						</select>
+						<small></small>
+					</div>
+					<div class="card-footer">
+						<input type="submit" class="btn btn-primary" value="Guardar" />
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="m-5"></div>
+
+</body>
+<footer th:replace="~{/plantilla :: footer}"></footer>
+</html>

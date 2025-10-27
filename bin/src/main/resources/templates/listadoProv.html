@@ -5,43 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <title>Listado</title>
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 </head>
 <header th:replace="~{/plantilla :: header}"> </header>
 <body>
 	<div class="container">
 		<h1 th:text="${titulo}" class="text-center"></h1>
+	</div>	
+	<div>
+		<form action="" th:action="@{/buscar}" method="get">			
+				<!-- ******** Botón de búsqueda ********* -->
+			<div class="row">
+				<div class="input-group mb-3 col-lg-4 col-md-4">
+				<i class="bi bi-search"></i>
+					<button class="btn btn-outline-primary" type="submit" 
+						id="button-addon1" th:text="'Buscar por razón'">
+												
+					</button>
+					<input type="text" class="form-control"
+						placeholder="Buscar por nombre" name="busqueda">
+				</div>
+			</div>
+		</form>
 	</div>
-	<!-- Botón para abrir el PopUp -->
-		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buscarModal">
-		    Buscar proveedor
-		</button>
-		
-		<!-- Modal Bootstrap -->
-		<div class="modal fade" id="buscarModal" tabindex="-1" aria-labelledby="buscarModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="buscarModalLabel">Buscar proveedor</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Formulario de búsqueda -->
-                <form id="formBusqueda" th:action="@{/buscar}" method="get">
-                    <div class="mb-3">
-                        <label for="keyword" class="form-label">Ingrese la razón social:</label>
-                        <input type="text" class="form-control" id="keyword" name="keyword" required>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Buscar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-	
 	<table class="table">
 			<thead class="thead-dark text-center">
 				<tr>
@@ -80,11 +65,6 @@
 				</tr>
 			</tbody>
 		</table>
-		
-	<!-- Bootstrap JS (necesario para el modal) -->
-	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-	<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>-->
-	
 </body>
 <footer th:replace="~{/plantilla :: footer}"> </footer>
 </html>
