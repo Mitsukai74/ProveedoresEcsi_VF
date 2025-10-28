@@ -1,9 +1,14 @@
 package com.projectEcsiDef.Controladores;
 
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +24,7 @@ import com.projectEcsiDef.Repositorios.ProveedoresRepository;
 import com.projectEcsiDef.Repositorios.RolRepository;
 import com.projectEcsiDef.Repositorios.UsuarioRepository;
 import com.projectEcsiDef.Servicios.IproveedoresServices;
-
-
+import com.projectEcsiDef.Servicios.ServiceExcel;
 
 @Controller
 public class PrincipalController {
@@ -39,6 +43,9 @@ public class PrincipalController {
 	
 	@Autowired
 	private ProveedoresRepository proveedoresRepository;
+	
+	@Autowired
+	private ServiceExcel serviceExcel;
 	
 	@GetMapping(path = "/login")
 	public String mostrarPlantilla() {
@@ -96,5 +103,25 @@ public class PrincipalController {
         model.addAttribute("resultados", resultados);
         model.addAttribute("keyword", keyword); // opcional, para mostrar lo que buscó el usuario
         return "vistaBusquedas"; 
+    }
+    
+    @GetMapping("/descargar")
+    public ResponseEntity<ByteArrayResource> descargarExcel() throws IOException {
+        // Obtener la lista de proveedores desde el servicio
+        List<Proveedores> listaProveedores = iproveedoresServices.listarTodosProvReem();
+
+        // Generar el archivo Excel usando el servicio
+        byte[] datosExcel = serviceExcel.generarExcelProveedores(listaProveedores);
+
+        // Configurar la respuesta con los datos del archivo Excel
+        ByteArrayResource resource = new ByteArrayResource(datosExcel);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=listado_prov.xlsx");
+        
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(datosExcel.length)
+                .contentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
+                .body(resource);
     }
 }
