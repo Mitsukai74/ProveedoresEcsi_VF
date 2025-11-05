@@ -40,8 +40,7 @@
             </div>
         </div>
     </div>
-</div>
-	
+</div>	
 	<table class="table">
 			<thead class="thead-dark text-center">
 				<tr>
@@ -72,11 +71,16 @@
 					<td th:text="${prov.actividad}"></td>
 					<td th:text="${prov.tipoProv}"></td>
 					<td th:text="${prov.fechaCreacion}"></td>
-					<!-- <td><a class="btn btn-success btn-sm" th:text="'Ver documentos'"
-						title="Ver documentos"
-						th:href="@{/provReembolsos/edit/} + ${preem.id}"
-						onclick="return confirm('No tiene privilegios para ver los documentos')">
-					</a></td> -->
+					<td>
+						<a th:if="${rutas[prov.id] != null}"
+							th:ref="'file:///' + {rutas[proveedor.id]}"
+							target="_blank"
+							class="btn btn-info btn-sm">
+							Abrir carpeta						
+						</a>
+						<span th:if="${rutas[prov.id] == null">Sin ruta registrada</span>					
+					</td>		
+					
 				</tr>
 			</tbody>
 		</table>

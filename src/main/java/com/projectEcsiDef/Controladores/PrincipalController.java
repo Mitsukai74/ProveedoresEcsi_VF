@@ -1,7 +1,10 @@
 package com.projectEcsiDef.Controladores;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.data.domain.Page;
@@ -22,14 +25,16 @@ import com.projectEcsiDef.Entidades.Rol;
 import com.projectEcsiDef.Entidades.Users;
 import com.projectEcsiDef.Repositorios.ProveedoresRepository;
 import com.projectEcsiDef.Repositorios.RolRepository;
+import com.projectEcsiDef.Repositorios.RutaDocRepository;
 import com.projectEcsiDef.Repositorios.UsuarioRepository;
 import com.projectEcsiDef.Servicios.IproveedoresServices;
 import com.projectEcsiDef.Servicios.ServiceExcel;
+import com.projectEcsiDef.Servicios.UrlDocServices;
 
 @Controller
 public class PrincipalController {
-	
-	@Autowired
+
+    @Autowired
 	private IproveedoresServices iproveedoresServices;
 	
 	@Autowired
@@ -45,7 +50,11 @@ public class PrincipalController {
 	private ProveedoresRepository proveedoresRepository;
 	
 	@Autowired
+	private UrlDocServices urlDocServices;
+	
+	@Autowired
 	private ServiceExcel serviceExcel;
+    
 	
 	@GetMapping(path = "/login")
 	public String mostrarPlantilla() {
@@ -61,12 +70,22 @@ public class PrincipalController {
 	public String listarprovReembolsos(Model model) {	
     	List<Proveedores> listadoprov = iproveedoresServices.listarTodosProvReem();
     	
+    	
+    	// Agregar las rutas de red asociadas
+    	Map<Integer, String> urlDocumentos = new HashMap<>();
+        for (Proveedores p : listadoprov) {
+            urlDocServices.obtenerRutaPorProveedor(p.getId())
+                .ifPresent(ruta -> urlDocumentos.put((int) p.getId(), ruta.getUrlCarpeta()));
+        }
+    	
     	model.addAttribute("titulo", "Listado de proveedores");
     	model.addAttribute("Proveedores",listadoprov);
+    	model.addAttribute("rutas",urlDocumentos);
     	
     	return "listadoProv";    	
 		
 	}
+    
     
     @GetMapping("/user/form")
     public String showUserForm(Model model) {
