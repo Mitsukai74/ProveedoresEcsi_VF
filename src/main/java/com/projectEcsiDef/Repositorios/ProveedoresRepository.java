@@ -18,4 +18,7 @@ public interface ProveedoresRepository extends JpaRepository<Proveedores, Intege
 	//query para la busqueda de proveedores sin importar camel case
 	 @Query("SELECT p FROM Proveedores p WHERE LOWER(p.razonSocial) LIKE LOWER(CONCAT('%', :keyword, '%'))")
 	    List<Proveedores> searchByRazonSocial(@Param("keyword") String keyword);
+	 
+	 @Query("SELECT p FROM Proveedores p WHERE LOWER(p.nit) LIKE LOWER(CONCAT('%', :nit, '%'))")
+	    List<Proveedores> searchByNit(@Param("nit") String nit);
 }

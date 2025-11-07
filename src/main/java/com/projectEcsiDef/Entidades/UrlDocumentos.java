@@ -2,10 +2,12 @@ package com.projectEcsiDef.Entidades;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -17,12 +19,15 @@ public class UrlDocumentos {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne
-	@JoinColumn(name = "CODIGO_ECSI", nullable = false)
-	private Proveedores proveedores;
+	//@Column(name = "codigo_ecsi", nullable = false)
+	//private double codigoEcsi;	
 	
 	@Column(name = "URL_CARPETA", nullable = false)
 	private String urlCarpeta;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "codigo_ecsi", referencedColumnName = "codigo_ecsi", nullable = false)
+    private Proveedores proveedores;
 
 	public Integer getId() {
 		return id;
@@ -32,20 +37,12 @@ public class UrlDocumentos {
 		this.id = id;
 	}
 	
-	public Proveedores getProveedores() {
-        return proveedores;
-    }
-
-    public void setProveedores(Proveedores proveedores) {
-        this.proveedores = proveedores;
-    }
-
 	public String getUrlCarpeta() {
 		return urlCarpeta;
 	}
 
 	public void setUrlCarpeta(String urlCarpeta) {
 		this.urlCarpeta = urlCarpeta;
-	}
+	}	
 
 }

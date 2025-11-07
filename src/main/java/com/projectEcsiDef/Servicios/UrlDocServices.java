@@ -14,9 +14,9 @@ public class UrlDocServices {
 	@Autowired
 	private RutaDocRepository rutaDocRepository;
 	
-	public Optional<UrlDocumentos> obtenerRutaPorProveedor(Integer proveedorId){
+	public Optional<UrlDocumentos> obtenerRutaPorProveedor(double codigoEcsi){
 		
-		return rutaDocRepository.findByProveedores_Id(proveedorId);
+		return rutaDocRepository.findByProveedores_CodigoEcsi(codigoEcsi);
 	}
 	
 	//Método que accede solo los admin para guardar las rutas URL

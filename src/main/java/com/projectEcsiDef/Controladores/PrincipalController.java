@@ -74,7 +74,7 @@ public class PrincipalController {
     	// Agregar las rutas de red asociadas
     	Map<Integer, String> urlDocumentos = new HashMap<>();
         for (Proveedores p : listadoprov) {
-            urlDocServices.obtenerRutaPorProveedor(p.getId())
+            urlDocServices.obtenerRutaPorProveedor(p.getCodigoEcsi())
                 .ifPresent(ruta -> urlDocumentos.put((int) p.getId(), ruta.getUrlCarpeta()));
         }
     	
@@ -121,6 +121,14 @@ public class PrincipalController {
         List<Proveedores> resultados = proveedoresRepository.searchByRazonSocial(keyword);
         model.addAttribute("resultados", resultados);
         model.addAttribute("keyword", keyword); // opcional, para mostrar lo que buscó el usuario
+        return "vistaBusquedas"; 
+    }
+    
+    @GetMapping("/buscarPorNit")
+    public String buscarProveedoresNit(@RequestParam("nit") String nit, Model model) {
+        List<Proveedores> resultados = proveedoresRepository.searchByNit(nit);
+        model.addAttribute("resultados", resultados);
+        model.addAttribute("nit", nit); // opcional, para mostrar lo que buscó el usuario
         return "vistaBusquedas"; 
     }
     

@@ -14,15 +14,18 @@
 	</div>
 	<!-- Botón para abrir el PopUp -->
 		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buscarModal">
-		    Buscar proveedor
+		    Buscar proveedor por nombre
+		</button>				
+		<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalBuscarNit">
+		    Buscar proveedor por NIT
 		</button>
 		
-		<!-- Modal Bootstrap -->
+		<!-- Modal Bootstrap busqueda por razon-->
 		<div class="modal fade" id="buscarModal" tabindex="-1" aria-labelledby="buscarModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="buscarModalLabel">Buscar proveedor</h5>
+    	<div class="modal-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<h5 class="modal-title" id="buscarModalLabel">Buscar proveedor</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
@@ -40,7 +43,32 @@
             </div>
         </div>
     </div>
-</div>	
+</div>
+<!-- Modal Bootstrap busqueda por NIT-->
+		<div class="modal fade" id="modalBuscarNit" tabindex="-1" aria-labelledby="modalBuscarNitLabel" aria-hidden="true">
+    	<div class="modal-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<h5 class="modal-title" id="modalBuscarNitLabel">Buscar proveedor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario de búsqueda -->
+                <form th:action="@{/buscarPorNit}" method="get">
+                    <div class="mb-3">
+                        <label for="nit" class="form-label">Ingrese el número del NIT o parte de él:</label>
+                        <input type="text" class="form-control" id="nit" name="nit" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+	
 	<table class="table">
 			<thead class="thead-dark text-center">
 				<tr>
@@ -78,7 +106,7 @@
 							class="btn btn-info btn-sm">
 							Abrir carpeta						
 						</a>
-						<span th:if="${rutas[prov.id] == null">Sin ruta registrada</span>					
+						<span th:if="${rutas[prov.id] == null}">Sin ruta registrada</span>					
 					</td>		
 					
 				</tr>

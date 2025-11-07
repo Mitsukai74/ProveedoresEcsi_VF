@@ -18,8 +18,9 @@ public class Proveedores {
 	
 	@Column(name = "NIT", columnDefinition = "CHARACTER(20)")
 	private String nit;
-	@Column(name = "CODIGO_ECSI", columnDefinition = "DOUBLE(8)")
-	private double codigoEcsi;
+	
+	@Column(name = "CODIGO_ECSI", columnDefinition = "DOUBLE(8)", unique =true, nullable=false)
+	private Double codigoEcsi;
 	@Column(name = "RAZON_SOCIAL", columnDefinition = "CHARACTER(50)")
 	private String razonSocial;
 	@Column(name = "DIRECCION", columnDefinition = "CHARACTER(50)")
