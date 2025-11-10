@@ -10,6 +10,6 @@ import com.projectEcsiDef.Entidades.UrlDocumentos;
 @Repository
 public interface RutaDocRepository extends JpaRepository<UrlDocumentos, Integer> {
 	
-	Optional<UrlDocumentos> findByProveedores_CodigoEcsi(double codigoEcsi);
+	Optional<UrlDocumentos> findByProveedor_CodigoEcsi(Double codigoEcsi);
 
 }

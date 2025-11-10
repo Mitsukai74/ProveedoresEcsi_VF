@@ -19,15 +19,12 @@ public class UrlDocumentos {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	//@Column(name = "codigo_ecsi", nullable = false)
-	//private double codigoEcsi;	
-	
 	@Column(name = "URL_CARPETA", nullable = false)
 	private String urlCarpeta;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "codigo_ecsi", referencedColumnName = "codigo_ecsi", nullable = false)
-    private Proveedores proveedores;
+    private Proveedores proveedor;
 
 	public Integer getId() {
 		return id;
@@ -43,6 +40,14 @@ public class UrlDocumentos {
 
 	public void setUrlCarpeta(String urlCarpeta) {
 		this.urlCarpeta = urlCarpeta;
+	}
+
+	public Proveedores getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(Proveedores proveedor) {
+		this.proveedor = proveedor;
 	}	
 
 }

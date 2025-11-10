@@ -151,4 +151,24 @@ public class PrincipalController {
                 .contentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
                 .body(resource);
     }
+    
+    @GetMapping("/nuevo")
+    public String mostrarFormulario() {
+        return "registrarUrl"; // Nombre del template Thymeleaf
+    }
+    
+    @PostMapping("/guardar")
+    public String guardarUrl(@RequestParam("codigoEcsi") Double codigoEcsi,
+                             @RequestParam("urlCarpeta") String urlCarpeta,
+                             Model model) {
+
+        try {
+            urlDocServices.guardarRuta(codigoEcsi, urlCarpeta);
+            model.addAttribute("mensaje", "Ruta guardada exitosamente.");
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
+        }
+
+        return "registrarUrl";
+    }
 }

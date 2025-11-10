@@ -1,6 +1,7 @@
 package com.projectEcsiDef.Repositorios;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.projectEcsiDef.Entidades.Proveedores;
+import com.projectEcsiDef.Entidades.UrlDocumentos;
 
 @Repository
 public interface ProveedoresRepository extends JpaRepository<Proveedores, Integer> {
@@ -21,4 +23,6 @@ public interface ProveedoresRepository extends JpaRepository<Proveedores, Intege
 	 
 	 @Query("SELECT p FROM Proveedores p WHERE LOWER(p.nit) LIKE LOWER(CONCAT('%', :nit, '%'))")
 	    List<Proveedores> searchByNit(@Param("nit") String nit);
+
+	 Optional<Proveedores> findByCodigoEcsi(Double codigoEcsi);
 }

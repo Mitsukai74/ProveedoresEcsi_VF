@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Registrar URL de Documentos</title>
+</head>
+<body>
+	<h2>Registrar URL de Documentos</h2>
+	
+	<form th:action="@{/urldocumentos/guardar}" method="post">
+    <div>
+        <label for="codigoEcsi">Código ECSI:</label>
+        <input type="text" id="codigoEcsi" name="codigoEcsi" required />
+    </div>
+
+    <div>
+        <label for="urlCarpeta">URL de la carpeta:</label>
+        <input type="text" id="urlCarpeta" name="urlCarpeta" required />
+    </div>
+
+    <div>
+        <button type="submit">Guardar</button>
+    </div>
+</form>
+
+<!-- Mensaje de éxito -->
+<div th:if="${mensaje}" style="color: green;">
+    <p th:text="${mensaje}"></p>
+</div>
+
+<!-- Mensaje de error -->
+<div th:if="${error}" style="color: red;">
+    <p th:text="${error}"></p>
+</div>
+
+</body>
+</html>
