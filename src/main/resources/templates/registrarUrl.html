@@ -4,34 +4,39 @@
 	<meta charset="UTF-8">
 	<title>Registrar URL de Documentos</title>
 </head>
+<!-- Estilos de Bootstrap 5.0-->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 <body>
+<div class="container">
 	<h2>Registrar URL de Documentos</h2>
-	
-	<form th:action="@{/urldocumentos/guardar}" method="post">
-    <div>
-        <label for="codigoEcsi">Código ECSI:</label>
-        <input type="text" id="codigoEcsi" name="codigoEcsi" required />
-    </div>
+	<div class="card bg-light">
+		<form th:action="@{/urldocumentos/guardar}" method="post">
+			<div>
+				<label for="codigoEcsi">Código ECSI:</label> <input type="text"
+					id="codigoEcsi" name="codigoEcsi" required />
+			</div>
 
-    <div>
-        <label for="urlCarpeta">URL de la carpeta:</label>
-        <input type="text" id="urlCarpeta" name="urlCarpeta" required />
-    </div>
+			<div>
+				<label for="urlCarpeta">URL de la carpeta:</label> <input
+					type="text" id="urlCarpeta" name="urlCarpeta" required />
+			</div>
 
-    <div>
-        <button type="submit">Guardar</button>
-    </div>
-</form>
+			<div>
+				<button type="submit">Guardar</button>
+			</div>
+		</form>
+	</div>
 
-<!-- Mensaje de éxito -->
-<div th:if="${mensaje}" style="color: green;">
-    <p th:text="${mensaje}"></p>
-</div>
+	<!-- Mensaje de éxito -->
+	<div th:if="${mensaje}" style="color: green;">
+		<p th:text="${mensaje}"></p>
+	</div>
 
-<!-- Mensaje de error -->
-<div th:if="${error}" style="color: red;">
-    <p th:text="${error}"></p>
-</div>
+	<!-- Mensaje de error -->
+	<div th:if="${error}" style="color: red;">
+		<p th:text="${error}"></p>
+	</div>
+	</div>
 
 </body>
 </html>

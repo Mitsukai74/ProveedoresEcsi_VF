@@ -20,10 +20,10 @@ public class CustomErrorController implements ErrorController {
             switch (statusCode) {
             case 404:
                 model.addAttribute("mensaje", "La página que busca no existe o fue movida.");
-                return "errors/Error_404";
+                return "errors/404";
             case 500:
                 model.addAttribute("mensaje", "Ha ocurrido un error interno en el servidor.");
-                return "errors/Error_500";
+                return "errors/500";
             default:
                 model.addAttribute("mensaje", "Ha ocurrido un error inesperado.");
                 return "errors/Error";

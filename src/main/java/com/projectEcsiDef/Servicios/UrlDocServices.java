@@ -19,7 +19,7 @@ public class UrlDocServices {
 	@Autowired
 	private ProveedoresRepository proveedoresRepository;
 	
-	public Optional<UrlDocumentos> obtenerRutaPorProveedor(double codigoEcsi){
+	public Optional<UrlDocumentos> obtenerRutaPorProveedor(Double codigoEcsi){
 		
 		return rutaDocRepository.findByProveedor_CodigoEcsi(codigoEcsi);
 	}

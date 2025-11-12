@@ -48,7 +48,7 @@ public class SecurityCofig {
 	                .logoutSuccessUrl("/login?logout")
 	                .permitAll()
 	            )
-	            .exceptionHandling(e -> e.accessDeniedPage("/error/403"))
+	            .exceptionHandling(e -> e.accessDeniedPage("/errors"+ "/403"))
 	            .userDetailsService(usuarioDetailsService)
 	            .build();
     }
