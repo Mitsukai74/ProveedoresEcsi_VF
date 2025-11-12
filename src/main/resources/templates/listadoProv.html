@@ -102,7 +102,8 @@
 					<td>
     					<span th:if="${rutas[prov.codigoEcsi] == null}">Sin ruta</span>
   						<a th:if="${rutas[prov.codigoEcsi] != null}"
-     						th:href="'file:' + ${rutas[prov.codigoEcsi]}"
+     						th:href="@{/docs/{carpeta}/(carpeta=${rutas[prov.codigoEcsi]})}"
+							target="_blank"
      						class="btn btn-info btn-sm">Abrir carpeta</a>
 					</td>	
 					
