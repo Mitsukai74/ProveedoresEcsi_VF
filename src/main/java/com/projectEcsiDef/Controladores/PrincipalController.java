@@ -72,10 +72,12 @@ public class PrincipalController {
     	
     	
     	// Agregar las rutas de red asociadas
-    	Map<Integer, String> urlDocumentos = new HashMap<>();
+    	Map<Double, String> urlDocumentos = new HashMap<>();
+    	
         for (Proveedores p : listadoprov) {
-            urlDocServices.obtenerRutaPorProveedor(p.getCodigoEcsi())
-                .ifPresent(ruta -> urlDocumentos.put((int) p.getId(), ruta.getUrlCarpeta()));
+        	Double codigo = p.getCodigoEcsi();
+            urlDocServices.obtenerRutaPorProveedor(codigo)
+                .ifPresent(ruta -> urlDocumentos.put(codigo,ruta.getUrlCarpeta()));
         }
     	
     	model.addAttribute("titulo", "Listado de proveedores");
