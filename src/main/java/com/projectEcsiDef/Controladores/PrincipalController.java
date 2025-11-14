@@ -1,6 +1,8 @@
 package com.projectEcsiDef.Controladores;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.projectEcsiDef.Entidades.Proveedores;
@@ -173,4 +176,14 @@ public class PrincipalController {
 
         return "registrarUrl";
     }
+    
+
+		@GetMapping("/test")
+		public List<String> listarDocumentos() {
+			File carpeta = new File("D:/"); // o /mnt/documentos en Linux
+			String[] archivos = carpeta.list();
+			return archivos != null ? Arrays.asList(archivos) : List.of("No se encontró la carpeta");
+		}
+	
+
 }
