@@ -2,6 +2,7 @@ package com.projectEcsiDef.Controladores;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -75,13 +77,13 @@ public class PrincipalController {
     	
     	
     	// Agregar las rutas de red asociadas
-    	Map<Double, String> urlDocumentos = new HashMap<>();
-    	
-        for (Proveedores p : listadoprov) {
-        	Double codigo = p.getCodigoEcsi();
-            urlDocServices.obtenerRutaPorProveedor(codigo)
-                .ifPresent(ruta -> urlDocumentos.put(codigo,ruta.getUrlCarpeta()));
-        }
+		
+		  Map<Double, String> urlDocumentos = new HashMap<>();
+		  
+		  for (Proveedores p : listadoprov) { Double codigo = p.getCodigoEcsi();
+		  urlDocServices.obtenerRutaPorProveedor(codigo) .ifPresent(ruta ->
+		  urlDocumentos.put(codigo,ruta.getUrlCarpeta())); }
+		 
     	
     	model.addAttribute("titulo", "Listado de proveedores");
     	model.addAttribute("Proveedores",listadoprov);
@@ -90,6 +92,42 @@ public class PrincipalController {
     	return "listadoProv";    	
 		
 	}
+    
+    //metodo para listar los documentos del proveedor
+    
+    @GetMapping("/documentos/{carpeta}")
+    public String listarDocumentos(@PathVariable String carpeta, Model model) {
+    	
+    	// Ruta BASE donde estan TODAS las carpetas por proveedor, cambiar segun corresponda
+    	String rutaBase = "G:/PROVEEDORES_2025/";
+    	
+    	File folder = new File(rutaBase + carpeta);
+    	List<String> archivos = new ArrayList<>();
+    	
+    	// Verificar si existe la carpeta
+        if (folder.exists() && folder.isDirectory()) {
+
+            // Listar todos los archivos dentro de la carpeta
+            File[] listaArchivos = folder.listFiles();
+            if (listaArchivos != null) {
+                for (File archivo : listaArchivos) {
+                    if (archivo.isFile()) { // Solo archivos
+                        archivos.add(archivo.getName());
+                    }
+                }
+            }
+
+        } else {
+            model.addAttribute("error", "La carpeta no existe o no es accesible.");
+        }
+
+        model.addAttribute("archivos", archivos);
+        model.addAttribute("carpeta", carpeta);
+    	    	
+    	
+    	return "listaDocumentos"; // Vista Thymeleaf
+    
+    }
     
     
     @GetMapping("/user/form")

@@ -10,11 +10,9 @@ public class DocumentosConfig implements WebMvcConfigurer{
 
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		//Ruta HTTP que usara la APP
-		String rutaBase = "file:///D:/PROVEEDORES_2025/";
-        registry.addResourceHandler("/documentos/**")        
-                .addResourceLocations(rutaBase)
-                .setCachePeriod(0);// Sin caché para desarrollo    
+		// OJO: usa "file:///" + la ruta completa con slash al final
+        registry.addResourceHandler("/documentos/**")
+                .addResourceLocations("file:///G:/PROVEEDORES_2025/");
 
     }
 
