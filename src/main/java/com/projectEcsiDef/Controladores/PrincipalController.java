@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.projectEcsiDef.Entidades.Proveedores;
 import com.projectEcsiDef.Entidades.Rol;
@@ -141,7 +142,8 @@ public class PrincipalController {
     
     @PostMapping("/user/save")
     public String guardarUsuario(@ModelAttribute("usuario") Users usuario,
-                                 @RequestParam("idRol") int idRol) {
+                                 @RequestParam("idRol") int idRol,
+    							RedirectAttributes redirectAttributes) {
 
         // Encriptar la clave antes de guardar
         usuario.setClave(passwordEncoder.encode(usuario.getClave()));
@@ -154,6 +156,9 @@ public class PrincipalController {
         
         // Guardar usuario en BD
         usersRepository.save(usuario);
+        
+        // Mensaje para popup
+        redirectAttributes.addFlashAttribute("usuarioCreado", true);
 
         // Redirigir al listado o al inicio
         return "redirect:/inicio";
@@ -213,15 +218,6 @@ public class PrincipalController {
         }
 
         return "registrarUrl";
-    }
-    
-
-		@GetMapping("/test")
-		public List<String> listarDocumentos() {
-			File carpeta = new File("D:/"); // o /mnt/documentos en Linux
-			String[] archivos = carpeta.list();
-			return archivos != null ? Arrays.asList(archivos) : List.of("No se encontró la carpeta");
-		}
-	
+    }	
 
 }

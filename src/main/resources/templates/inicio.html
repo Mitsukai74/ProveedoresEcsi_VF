@@ -133,11 +133,25 @@
     
     <a class="btn btn-primary btn-lg btn-block" th:href="@{/listado}"
 				th:text="'Click para continuar'" title="Lista de proveedores"></a>
-    <!-- Projects End -->
+    <!-- Final del proyecto -->
     <!-- Archivos js -->
 	<!-- <script src="lib/owlcarousel/owl.carousel.min.js"></script> -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-  <footer th:replace="~{/plantilla :: footer}"></footer>    
-</body>
+    
+    <!-- Ventana POPUP de creación de usuarios -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script th:if="${usuarioCreado}">
+    Swal.fire({
+        icon: 'success',
+        title: 'Usuario creado',
+        text: 'El usuario ha sido registrado correctamente',
+        confirmButtonText: 'Aceptar'
+    });
+	</script>  
+    
+ </body>
+
+<footer th:replace="~{/plantilla :: footer}"></footer>
 </html>
