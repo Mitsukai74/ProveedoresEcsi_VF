@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{/plantilla :: head}">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -83,7 +83,7 @@
 					<th scope="col">CIIU</th>
 					<th scope="col">Tipo Prov</th>
 					<th scope="col">Fecha creación</th>					
-					<th scope="col">Ver documentación</th>
+					<th scope="col" sec:authorize="hasRole('ADMIN')">Ver documentación</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -99,7 +99,7 @@
 					<td th:text="${prov.actividad}"></td>
 					<td th:text="${prov.tipoProv}"></td>
 					<td th:text="${prov.fechaCreacion}"></td>
-					<td>
+					<td sec:authorize="hasRole('ADMIN')">
     					<span th:if="${rutas[prov.codigoEcsi] == null}">Sin ruta</span>
 						<a th:if="${rutas[prov.codigoEcsi] != null}"
 						       th:href="@{'/documentos/' + ${rutas[prov.codigoEcsi]}}"

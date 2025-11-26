@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Registrar URL de Documentos</title>
 </head>
+<header th:replace="~{/plantilla :: header}"> </header>
 <!-- Estilos de Bootstrap 5.0-->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 <body>
@@ -19,6 +20,9 @@
 			<div>
 				<label for="urlCarpeta">URL de la carpeta:</label> <input
 					type="text" id="urlCarpeta" name="urlCarpeta" required />
+					<small class="text-muted">
+                		Ejemplo: <b>81299_ROZO_CARRION_RAMON</b>
+            		</small>
 			</div>
 
 			<div>

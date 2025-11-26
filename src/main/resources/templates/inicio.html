@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head>
+<head th:replace="~{/plantilla :: head}">
 	<meta charset="utf-8">
 	<title>Inicio plataforma de proveedores ECSI SAS</title>
 	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
@@ -13,10 +13,8 @@
     <!-- plantilla de estilos generales -->
     <link rel="stylesheet" th:href="@{/css/style.css}">	
 </head>
-
-<body>
-
-	<header th:replace="~{/plantilla :: header}"> </header>
+<header th:replace="~{/plantilla :: header}"> </header>
+<body>	
 
 <!-- Inicio del carrusel -->
 	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -86,8 +84,7 @@
                             <h5 class="lh-base mb-3">Desde la barra de herramientas se puede escoger por:                              
                             <ul>
                                 <li>Número de NIT</li>
-                                <li>Razón social</li>
-                                <li>Código de proveedor ECSI</li>                                
+                                <li>Razón social</li>                                                               
                             </ul>
                             </h5>                            
                         </div>
@@ -97,14 +94,13 @@
                     <div class="portfolio-inner">
                         <img class="img-fluid w-100" src="img/portfolio-3.jpg" alt="">
                         <div class="text-center p-4">
-                            <p class="text-primary mb-2">Descarga de reporte de búsqueda</p>
+                            <p class="text-primary mb-2">3. Descarga de reporte de búsqueda</p>
                             <h5 class="lh-base mb-0"></h5>
                         </div>
                         <div class="portfolio-text text-center bg-white p-4">                            
-                            <h5 class="lh-base b-2">Después de realizar la respectiva búsqueda </h5>
+                            <h5 class="lh-base b-2">Después de realizar la respectiva búsqueda</h5>
                             <div class="d-flex justify-content-center">
-                              <ul>
-                                <li>Ingresar.....</li>
+                              <ul>                                
                                 <li>Elegir el formato a descargar</li>
                                 <li>Ubicar un lugar para descargar el archivo</li>                                
                             </ul>                             
@@ -116,13 +112,18 @@
                     <div class="portfolio-inner">
                         <img class="img-fluid w-100" src="img/portfolio-5.jpg" alt="">
                         <div class="text-center p-4">
-                            <p class="text-primary mb-2">Visualización de documentos</p>
-                            <h5 class="lh-base mb-0"></h5>
+                            <p class="text-primary mb-2">4. Visualización de documentos</p>
+                            <h5 class="lh-base mb-0">Solo para los usuarios con rol de administrador</h5>
                         </div>
                         <div class="portfolio-text text-center bg-white p-4">
-                            <p class="text-primary mb-2">Solo para los usuarios con rol de administrador</p>
+                            <p class="text-primary mb-2"></p>
                             <h5 class="lh-base mb-3"></h5>
-                            <div class="d-flex justify-content-center">                                
+                            <div class="d-flex justify-content-center">
+                            <ul>                                
+                                <li>Dar click en el respectivo proveedor para ver documentación</li>
+                                <li>Se despliega una ventana con la lista</li>
+                                <li>Hacer click en el documento a visualizar</li>                                
+                            </ul>                               
                             </div>
                         </div>
                     </div>

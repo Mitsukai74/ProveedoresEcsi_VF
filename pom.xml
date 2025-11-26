@@ -51,7 +51,6 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -83,13 +82,12 @@
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml-schemas</artifactId>
-			<version>4.1.2</version> <!-- Puede ser diferente, pero verifica
-			compatibilidad -->
+			<version>4.1.2</version> 
 		</dependency>
 		<dependency>
 			<groupId>org.apache.xmlbeans</groupId>
 			<artifactId>xmlbeans</artifactId>
-			<version>5.2.1</version> <!-- Asegúrate de que esta versión sea
+			<version>5.2.1</version> <!-- Asegurarse de que esta versión sea
 			compatible -->
 		</dependency>
 		<!--Dependencia para la paginación -->
@@ -97,6 +95,10 @@
 			<groupId>io.github.jpenren</groupId>
 			<artifactId>thymeleaf-spring-data-dialect</artifactId>
 			<version>3.6.0</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.thymeleaf.extras</groupId>
+    		<artifactId>thymeleaf-extras-springsecurity6</artifactId>
 		</dependency>
 	</dependencies>
 
