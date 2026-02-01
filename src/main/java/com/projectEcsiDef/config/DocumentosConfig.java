@@ -12,7 +12,7 @@ public class DocumentosConfig implements WebMvcConfigurer{
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// OJO: usa "file:///" + la ruta completa con slash al final
         registry.addResourceHandler("/documentos/**")
-                .addResourceLocations("file:///G:/PROVEEDORES_2025/");
+                .addResourceLocations("file:///D:/PROVEEDORES_2025/");
 
     }
 

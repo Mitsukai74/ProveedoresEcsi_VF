@@ -100,7 +100,7 @@ public class PrincipalController {
     public String listarDocumentos(@PathVariable String carpeta, Model model) {
     	
     	// Ruta BASE donde estan TODAS las carpetas por proveedor, cambiar segun corresponda
-    	String rutaBase = "G:/PROVEEDORES_2025/";
+    	String rutaBase = "D:/PROVEEDORES_2025/";
     	
     	File folder = new File(rutaBase + carpeta);
     	List<String> archivos = new ArrayList<>();
